@@ -1,4 +1,4 @@
-module github.com/whatsauth/webhook
+module github.com/kamagasaki/webhook
 
 go 1.21.3
 
@@ -9,6 +9,7 @@ require (
 	github.com/aiteung/module v0.0.27
 	github.com/gofiber/fiber/v2 v2.50.0
 	github.com/whatsauth/wa v0.0.1
+	github.com/whatsauth/webhook v0.1.6
 	github.com/whatsauth/ws v0.0.2
 )
 
