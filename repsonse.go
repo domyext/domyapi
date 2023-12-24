@@ -191,6 +191,7 @@ func getRandomNameCall(msg model.IteungMessage) (resp atmessage.Response) {
 }
 
 func getRandomMasterCall(msg model.IteungMessage) (resp atmessage.Response) {
+
 	// Seed the random number generator
 	rand.Seed(time.Now().UnixNano())
 

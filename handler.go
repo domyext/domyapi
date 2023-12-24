@@ -14,34 +14,29 @@ func PostMessage(c *fiber.Ctx) error {
 		return err
 	}
 	var resp atmessage.Response
-	if h.Secret == WebhookSecret {
-		var msg model.IteungMessage
-		err = c.BodyParser(&msg)
-		if err != nil {
-			return err
-		}
+	var msg model.IteungMessage
+	err = c.BodyParser(&msg)
+	if err != nil {
+		return err
+	}
 
-		// Handle login request
-		if ws.IsLoginRequest(msg, WAKeyword) {
-			resp = HandlerQRLogin(msg, WAKeyword)
-		} else if msg.Message == "Babi" || msg.Message == "Anjing" || msg.Message == "goblok" {
-			resp = getRandomRude(msg)
-		} else if msg.Message == "sayang" || msg.Message == "syg" || msg.Message == "cinta" {
-			resp = getRandomRude(msg)
-		} else if msg.Message == "cantik" {
-			resp = getRandomCompliment(msg)
-		} else if msg.Message == "Alice" || msg.Message == "alice" || msg.Message == "lis" {
-			resp = getRandomNameCall(msg)
-		} else if msg.Message == "Alif" || msg.Message == "lif" || msg.Message == "liff" || msg.Message == "lip" || msg.Message == "lipp" {
-			resp = getRandomMasterCall(msg)
-		} else if msg.Message == "p" {
-			resp = getRandomRoast(msg)
-		} else {
-			resp = getRandomGreetings(msg)
-		}
+	// Handle login request
+	if msg.Message == "Babi" || msg.Message == "Anjing" || msg.Message == "goblok" {
+		resp = getRandomRude(msg)
+	} else if msg.Message == "sayang" || msg.Message == "syg" || msg.Message == "cinta" {
+		resp = getRandomRude(msg)
+	} else if msg.Message == "cantik" {
+		resp = getRandomCompliment(msg)
+	} else if msg.Message == "Alice" || msg.Message == "alice" || msg.Message == "lis" {
+		resp = getRandomNameCall(msg)
+	} else if msg.Message == "Alif" || msg.Message == "lif" || msg.Message == "liff" || msg.Message == "lip" || msg.Message == "lipp" {
+		resp = getRandomMasterCall(msg)
+	} else if msg.Message == "p" {
+		resp = getRandomRoast(msg)
+	} else if ws.IsLoginRequest(msg, WAKeyword) {
+		resp = HandlerQRLogin(msg, WAKeyword)
 	} else {
-		// Random response for incorrect secret code
-		resp.Response = getRandomIncorrectSecretMessage()
+		resp = getRandomGreetings(msg)
 	}
 	return c.JSON(resp)
 }
