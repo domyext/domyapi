@@ -2,6 +2,8 @@ package webhook
 
 import (
 	"fmt"
+	"math/rand"
+	"time"
 
 	"github.com/aiteung/atapi"
 	"github.com/aiteung/atmessage"
@@ -10,8 +12,8 @@ import (
 )
 
 func HandlerIncomingMessage(msg model.IteungMessage) (resp atmessage.Response) {
-	// Use the globalRand instance instead of rand.Seed
-	// rand.Seed(time.Now().UnixNano())
+	// Seed the random number generator
+	rand.Seed(time.Now().UnixNano())
 
 	var messageTemplates []string
 
@@ -87,10 +89,10 @@ func HandlerIncomingMessage(msg model.IteungMessage) (resp atmessage.Response) {
 	}
 
 	// Randomly select a message template
-	selectedTemplate := messageTemplates[globalRand.Intn(len(messageTemplates))]
+	selectedTemplate := messageTemplates[rand.Intn(len(messageTemplates))]
 
 	// Create the message with the selected template
-	message := fmt.Sprint(selectedTemplate)
+	message := fmt.Sprintf(selectedTemplate)
 
 	// Create a wa.TextMessage
 	dt := &wa.TextMessage{
