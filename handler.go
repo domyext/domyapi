@@ -1,9 +1,6 @@
 package webhook
 
 import (
-	"math/rand"
-	"time"
-
 	"github.com/aiteung/atmessage"
 	"github.com/aiteung/module/model"
 	"github.com/gofiber/fiber/v2"
@@ -39,9 +36,6 @@ func PostMessage(c *fiber.Ctx) error {
 
 // getRandomIncorrectSecretMessage returns a random message for incorrect secret code
 func getRandomIncorrectSecretMessage() string {
-	// Seed the random number generator
-	rand.Seed(time.Now().UnixNano())
-
 	// Array of possible incorrect secret messages
 	incorrectSecretMessages := []string{
 		"Oops! It seems like the secret code is incorrect.",
@@ -54,6 +48,6 @@ func getRandomIncorrectSecretMessage() string {
 		"BANGG UDAH BANGG, KODENYA SALAHHH",
 	}
 
-	// Randomly select a message
-	return incorrectSecretMessages[rand.Intn(len(incorrectSecretMessages))]
+	// Randomly select a message using the globalRand instance
+	return incorrectSecretMessages[globalRand.Intn(len(incorrectSecretMessages))]
 }
