@@ -7,6 +7,7 @@ require (
 	github.com/aiteung/atmessage v0.1.0
 	github.com/aiteung/module v0.0.27
 	github.com/gofiber/fiber/v2 v2.50.0
+	github.com/schollz/closestmatch v2.1.0+incompatible
 	github.com/whatsauth/wa v0.0.1
 	github.com/whatsauth/webhook v0.1.6
 	github.com/whatsauth/ws v0.0.2
