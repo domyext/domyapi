@@ -24,7 +24,7 @@ func HandlerIncomingMessage(msg model.IteungMessage) (resp atmessage.Response) {
 	closestMatch := matcher.Closest(msg.Message)
 
 	switch closestMatch {
-	case "Babi", "Anjing", "goblok":
+	case "Babi", "bgst" , "Anjing", "goblok", "tolol":
 		messageTemplates = []string{
 			"Ih sok asik",
 			"Lah gw pikir itu emak lu!!",
