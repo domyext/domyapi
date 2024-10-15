@@ -15,7 +15,6 @@ import (
 var matcher = closestmatch.New([]string{"Babi", "Anjing", "goblok", "sayang", "syg", "cinta", "cantik", "Alice", "alice", "lis", "Alif", "lif", "liff", "lip", "lipp", "p"}, []int{2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1})
 
 func HandlerIncomingMessage(msg model.IteungMessage) (resp atmessage.Response) {
-	// Seed the random number generator
 	rand.Seed(time.Now().UnixNano())
 
 	var messageTemplates []string
@@ -27,7 +26,6 @@ func HandlerIncomingMessage(msg model.IteungMessage) (resp atmessage.Response) {
 	case "Babi", "bgst" , "Anjing", "goblok", "tolol":
 		messageTemplates = []string{
 			"Ih sok asik",
-			"Lah gw pikir itu emak lu!!",
 			"Ampun bang jagooo",
 			"Ih najissss",
 			"Wah bocah bocah sok iye kaya gini nihh",
@@ -45,7 +43,6 @@ func HandlerIncomingMessage(msg model.IteungMessage) (resp atmessage.Response) {
 			"Love you babee <3",
 			"Apa sayangg kuu",
 			"peluk dong yanggg",
-			"JOMBLO CARI PACAR SONO IHHH",
 		}
 	case "cantik":
 		messageTemplates = []string{
