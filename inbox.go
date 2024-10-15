@@ -58,26 +58,6 @@ func HandlerIncomingMessage(msg model.IteungMessage) (resp atmessage.Response) {
 			"Ada apa kak",
 			"Ayoy kapten, napa?",
 		}
-	case "Alif", "lif", "liff", "lip", "lipp":
-		messageTemplates = []string{
-			"Ka Alif nya lagi turu, nanti aja yaaa",
-			"Kata Alif, dia lagi sibuk. Nanti yaaa",
-			"Alif nya lagi keluar, tunggu bentar yaaa",
-			"Ada apa kak? Nanti aku kasioh tau Alif nya",
-			"Halo kaka, Aku Alice botnya Alif. Ada yang bisa aku bantu?",
-		}
-	case "p", "P":
-		messageTemplates = []string{
-			"p p p p p p pant*",
-			"Minimal salam dong bos.. pa pe pap pe palalo petak",
-			"BENGEUT SIA PETAK ANJAY",
-			"Salam yang bener bang",
-			"Q",
-			"Oh, trying to be clever again?",
-			"You must have a Ph.D. in nonsense.",
-			"Jangan bangga deh, coba pakai otak sekali-kali.",
-			"Sei così divertente che sto per svenire...",
-		}
 	default:
 		messageTemplates = []string{
 			"Hai hai hai kak " + msg.Alias_name + "",
