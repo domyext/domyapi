@@ -25,6 +25,8 @@ func isAllowedOrigin(origin string) bool {
 			return true
 		}
 	}
+	log.Printf("Origin %s not allowed", origin)
+	return false
 }
 
 // Fungsi untuk mengatur header CORS
