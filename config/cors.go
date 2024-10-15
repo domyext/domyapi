@@ -1,6 +1,7 @@
 package domyApi
 
 import (
+	"log"  
 	"net/http"
 )
 
@@ -24,7 +25,6 @@ func isAllowedOrigin(origin string) bool {
 			return true
 		}
 	}
-	return false
 }
 
 // Fungsi untuk mengatur header CORS
