@@ -234,26 +234,31 @@ func TestSingleGet(t *testing.T) {
 func loadTestGet(t *testing.T, url string, headers map[string]string, cookies map[string]string, numRequests int) {
 	var wg sync.WaitGroup
 	var mu sync.Mutex
-	var totalFailures int
-
+	totalFailures := 0
 	start := time.Now()
 
 	for i := 0; i < numRequests; i++ {
 		wg.Add(1)
 		go func() {
 			defer wg.Done()
-			_, err := GetRequest(url, headers, cookies)
+			body, err := GetRequest(url, headers, cookies)
 			if err != nil {
 				mu.Lock()
 				totalFailures++
 				mu.Unlock()
 				t.Errorf("Failed to get data: %s", err)
+			} else {
+				if !strings.Contains(string(body), "expected content") {
+					mu.Lock()
+					totalFailures++
+					mu.Unlock()
+					t.Errorf("Response body does not contain expected content")
+				}
 			}
 		}()
 	}
 
 	wg.Wait()
-
 	duration := time.Since(start)
 	fmt.Printf("%d requests completed in %v with %d failures\n", numRequests, duration, totalFailures)
 }
